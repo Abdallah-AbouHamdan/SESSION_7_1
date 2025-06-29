@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: black;
+        }
+        section{
+            background-color: black;
+            height: 100vh;
+            width: 100%;
+        }
+        header{
+            padding: 30px;
+            height: fit-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(255, 204, 0);
+        }
+
+        nav{
+            display: flex;
+            gap: 30px;
+            font-size: 30px;
+            align-items: center;
+        }
+        .h{
+            top: 50px;
+            right: 20px;
+            position: absolute;
+            color: rgb(255, 204, 0);
+            z-index: 2;
+            visibility: hidden;
+        }
+        @media (max-width:700px){
+            nav{
+                visibility: hidden;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                font-size: 20px;
+                align-items: center;
+            }
+            .h{
+            top: 50px;
+            right: 20px;
+            position: absolute;
+            color: rgb(255, 204, 0);
+            z-index: 2;
+            visibility: visible;
+        }
+            .h:hover{
+                visibility:hidden;
+                a{
+                    visibility: visible;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <div><img src="Vector.png" width="100px"></div>
+            <div><nav>
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">About</a>
+                <a href="#">Contact Us</a>
+            </nav></div>
+        </header>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="90px" class="h" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+              </svg>
+              
+        </div>
+    </section>
+</body>
+</html>
