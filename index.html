@@ -10,84 +10,178 @@
             padding: 0;
             box-sizing: border-box;
         }
-        body{
-            background-color: black;
+        :root{
+            --black:#000000;
+            --yellow:#ffb800;
+            --yelloww:#ffb700d9;
+            --white:#ffffff;
         }
-        section{
-            background-color: black;
-            height: 100vh;
-            width: 100%;
+        .section1{
+            background-color: #1F1F1F;
+            min-height: 100vh;
+            min-width: 100%;
+            background-image:url(bg.png);
+            background-position: right;
+            background-repeat:  no-repeat;
+            background-size:100%;
         }
         header{
-            padding: 30px;
-            height: fit-content;
+            position: fixed;
+            top:0;
+            left:0;
+            width: 100%;
+            padding: 1.3rem 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
+            z-index: 100;
         }
-        a{
+        .header::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .links a {
+            font-size: 1.2rem;
             text-decoration: none;
-            color: rgb(255, 204, 0);
+            color:var(--yellow);
+            font-weight: 500;
+            margin-left: 2.5rem;
+        }
+        #checked{
+            display: none;
+        }
+        .list{
+            position: absolute;
+            right: 5%;
+            width: 60px;
+            cursor: pointer;
+            display: none;
+            color: var(--yellow);
+        }
+        main{
+            position: absolute;
+            left: 10%;
+            top: 20%;
+        }
+        .txt1 {
+            color: var(--yellow);
+            font-size: 4rem;
+        }
+        .txt2 {
+            color: var(--white);
+            font-size: 2rem;
+        }
+        .sec2{
+            position: absolute;
+            left: 10%;
+            bottom: 20%;
+        }
+        button{
+            height: 4.5rem;
+            width: 11rem;
+            background-color: var(--yellow);
+            border: none;
+            border-radius: 30px;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 30px;
+        }
+        @media (max-width: 992px){
+            header{
+                padding: 1.3rem 5%;
+            }
+            .txt1 {
+                color: var(--yellow);
+                font-size: 3rem;
+            }
+            .txt2 {
+                color: var(--white);
+                font-size: 1.5rem;
+            }
+        }
+        @media(max-width: 720px){
+            .list{
+                display: inline-flex;
+            }
+            #checked:checked~.list #menulist{
+                display: none;
+            }
+            #checked:checked~.list #closelist{
+                display: block;
+            }
+            .links{
+                position: absolute;
+                left: 0;
+                top: 100%;
+                width: 100%;
+                height: 0;
+                background-color: var(--yellow);
+                backdrop-filter: blur(50%);
+                box-shadow: 0 .5rem 1rem rgba(123, 123, 123, 0.665);
+                transition: .3s ease;
+                overflow: hidden;
+            }
+            #checked:checked~.links{
+                height: 12rem;
+            }
+            .links a {
+                display: block;
+                font-size: 1.1rem;
+                margin: 1.5rem 0;
+                text-align: center;
+                color: var(--black);
+            }
+            
+            .list #closelist{
+                display: none;
+            }
         }
 
-        nav{
-            display: flex;
-            gap: 30px;
-            font-size: 30px;
-            align-items: center;
-        }
-        .h{
-            top: 50px;
-            right: 20px;
-            position: absolute;
-            color: rgb(255, 204, 0);
-            z-index: 2;
-            visibility: hidden;
-        }
-        @media (max-width:700px){
-            nav{
-                visibility: hidden;
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                font-size: 20px;
-                align-items: center;
-            }
-            .h{
-            top: 50px;
-            right: 20px;
-            position: absolute;
-            color: rgb(255, 204, 0);
-            z-index: 2;
-            visibility: visible;
-        }
-            .h:hover{
-                visibility:hidden;
-                a{
-                    visibility: visible;
-                }
+        @media(max-width:568px){
+            .section1{
+                background-size: 130%;
             }
         }
     </style>
 </head>
 <body>
-    <section>
+    <section class="section1">
         <header>
-            <div><img src="Vector.png" width="100px"></div>
-            <div><nav>
+            <img src="Vector.png" width="80px">
+
+            <input type="checkbox" id="checked">
+            <label for="checked" class="list">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" id="menulist" viewBox="0 0 24 24" stroke-width="1.5"  stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" id="closelist" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+                    
+            </label>
+
+            <nav class="links">
                 <a href="#">Home</a>
                 <a href="#">Shop</a>
                 <a href="#">About</a>
                 <a href="#">Contact Us</a>
-            </nav></div>
+            </nav>
+
         </header>
-        <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="90px" class="h" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-              </svg>
-              
-        </div>
+        <main >
+            <h1 class="txt1">King Burger</h1>
+            <h5 class="txt2">
+                with various layers of delicious <br> food into one 
+            </h5>
+        </main>
+        <section class="sec2">
+            <button>
+                Order Now
+            </button>
+        </section>
     </section>
 </body>
 </html>
